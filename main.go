@@ -1,24 +1,19 @@
 package main
 
 import (
-	"bytes"
-	"io"
+	_ "embed"
 	"net/http"
 
 	"github.com/syumai/workers"
 )
 
+//go:embed public/index.html
+var htmlPage string
+
 func main() {
-	http.HandleFunc("/hello", func(w http.ResponseWriter, req *http.Request) {
-		msg := "Hello!"
-		w.Write([]byte(msg))
+	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Write([]byte(htmlPage))
 	})
-	http.HandleFunc("/echo", func(w http.ResponseWriter, req *http.Request) {
-		b, err := io.ReadAll(req.Body)
-		if err != nil {
-			panic(err)
-		}
-		io.Copy(w, bytes.NewReader(b))
-	})
-	workers.Serve(nil) // use http.DefaultServeMux
+	workers.Serve(nil)
 }

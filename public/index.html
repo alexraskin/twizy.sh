@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>twizy.sh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1b26;
+            color: #a9b1d6;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .terminal {
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .command {
+            color: #7aa2f7;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .command .prompt {
+            color: #9ece6a;
+        }
+
+        .ascii-art {
+            color: #c0caf5;
+            font-size: clamp(8px, 1.5vw, 14px);
+            line-height: 1.2;
+            white-space: pre;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .info {
+            color: #787c99;
+            font-size: 14px;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .info .separator {
+            color: #565f89;
+            margin: 0 8px;
+        }
+
+        .prompt-line {
+            color: #7aa2f7;
+            font-size: 14px;
+        }
+
+        .prompt-line .prompt {
+            color: #9ece6a;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #c0caf5;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .ascii-art {
+                font-size: 6px;
+            }
+            .info {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="command">
+            <span class="prompt">$</span> cat ./logo
+        </div>
+        <pre class="ascii-art">
+  _            _                 _     
+ | |          (_)               | |    
+ | |___      ___ _____   _   ___| |__  
+ | __\ \ /\ / / |_  / | | | / __| '_ \ 
+ | |_ \ V  V /| |/ /| |_| |_\__ \ | | |
+  \__| \_/\_/ |_/___|\__, (_)___/_| |_|
+                      __/ |            
+                     |___/
+        </pre>
+        <div class="info">
+            alex raskin<span class="separator">&#8226;</span>us-west-1<span class="separator">&#8226;</span>devops engineer
+        </div>
+        <div class="prompt-line">
+            <span class="prompt">$</span> <span class="cursor"></span>
+        </div>
+    </div>
+</body>
+</html>
